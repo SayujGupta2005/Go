@@ -1,0 +1,14 @@
+In modern Go (since version 1.11), every project should be a "module." If you see red squiggly lines in VS Code or errors about "GOPATH," it's because you haven't initialized a module yet.
+To fix this and get full IntelliSense (autocomplete) support, run this in your project folder:
+Bash =>
+go mod init {name}
+
+In Go, all files in the same folder are considered part of the same package. Since you have tut-1.go, tut-2.go, etc., all sitting in one folder and all starting with package main, the Go compiler thinks they are all one giant program.
+A single program (package main) can only have one func main(). It's like trying to have five steering wheels in one car—the compiler doesn't know which one should start the engine.
+
+Why we use the fmt package : 
+The fmt (format) package is part of the Go Standard Library. Here is why it is the "standard" choice over the built-in println:
+Precision and Formatting: fmt allows you to control exactly how data looks. For example, you can limit your float64 to two decimal places using fmt.Printf("%.2f", floatNum2). The built-in println cannot do this.
+Consistency: fmt outputs to Standard Output (stdout), which is where normal program results are expected to go. The built-in println outputs to Standard Error (stderr), which is usually reserved for logs and crash reports.
+Support for Many Types: fmt is designed to handle complex structures like "structs" or "maps" in a readable way.
+Return Values: Functions in fmt return the number of bytes written and any potential errors, allowing your program to handle issues if writing to the console fails.
